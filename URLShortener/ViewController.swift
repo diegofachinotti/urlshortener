@@ -9,7 +9,7 @@
 import UIKit
 
 // TODO: Move to own file.
-class ShortenedURL {
+class ShortenedURL:Codable {
     var date:Date
     var originalURL:URL
     var shortURL:URL
@@ -110,6 +110,7 @@ class ViewController: UIViewController {
                 
                 let shortenedURL = ShortenedURL(date: Date(), originalURL: originalURL, shortURL: shortURL)
                 self.shortenedURLS.append(shortenedURL)
+                self.saveShortenedURLS(self.shortenedURLS)
                 
                 DispatchQueue.main.async {
                     self.shortenedURLSTableView.reloadData()
@@ -127,6 +128,31 @@ class ViewController: UIViewController {
         // Setup as the data source
         shortenedURLSTableView.dataSource = self
         shortenedURLSTableView.delegate = self
+        
+        shortenedURLS = loadShortenedURLS()
+    }
+    
+    func saveShortenedURLS(_ shortenedURLS:[ShortenedURL]) {
+        
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(shortenedURLS) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "ShortenedURLS")
+        }
+        
+    }
+    
+    func loadShortenedURLS() -> [ShortenedURL] {
+        var savedShortenedURLS:[ShortenedURL] = []
+        
+        if let shortenedURLData = UserDefaults.standard.object(forKey: "ShortenedURLS") as? Data {
+            let decoder = JSONDecoder()
+            if let shortenedURLS = try? decoder.decode([ShortenedURL].self, from: shortenedURLData) {
+                savedShortenedURLS.append(contentsOf: shortenedURLS)
+            }
+        }
+        
+        return savedShortenedURLS
     }
 
 }
