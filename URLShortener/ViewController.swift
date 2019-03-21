@@ -126,6 +126,7 @@ class ViewController: UIViewController {
         
         // Setup as the data source
         shortenedURLSTableView.dataSource = self
+        shortenedURLSTableView.delegate = self
     }
 
 }
@@ -153,6 +154,21 @@ extension ViewController:UITableViewDataSource {
         cell.shortURLLabel.text = shortendURL.shortURL.absoluteString
         
         return cell
+    }
+    
+}
+
+
+extension ViewController:UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let shortendURL = shortenedURLS[indexPath.row]
+        
+        if UIApplication.shared.canOpenURL(shortendURL.shortURL) {
+            
+            // Open the Tiny URL in the browser when selecting the cell.
+            UIApplication.shared.open(shortendURL.shortURL, options: [:], completionHandler: nil)
+        }
     }
     
 }
