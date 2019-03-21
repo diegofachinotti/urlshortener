@@ -10,7 +10,8 @@ import UIKit
 
 
 class ViewController: UIViewController {
-
+    
+    let dao = ShortenedURLDAO()
     var shortenedURLS:[ShortenedURL] = []
     
     @IBOutlet weak var urlField: UITextField!
@@ -37,7 +38,7 @@ class ViewController: UIViewController {
                 self.shortenedURLS.append(shortenedURL)
                 
                 // Save using DAO.
-                ShortenedURLDAO.saveShortenedURLS(self.shortenedURLS)
+                self.dao.saveShortenedURLS(self.shortenedURLS)
                 
                 DispatchQueue.main.async {
                     self.shortenedURLSTableView.reloadData()
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
         shortenedURLSTableView.delegate = self
         
         // Load using DAO.
-        shortenedURLS = ShortenedURLDAO.loadShortenedURLS()
+        shortenedURLS = dao.loadShortenedURLS()
     }
    
 }
@@ -95,6 +96,7 @@ extension ViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let shortendURL = shortenedURLS[indexPath.row]
         
+        // First check if we can open it.
         if UIApplication.shared.canOpenURL(shortendURL.shortURL) {
             
             // Open the Tiny URL in the browser when selecting the cell.

@@ -8,20 +8,28 @@
 
 import Foundation
 
-// TODO: Change to other storage type?
+/// A data access object to retrieve and save ShortenedURLs
 class ShortenedURLDAO {
 
-    static func saveShortenedURLS(_ shortenedURLS:[ShortenedURL]) {
+    /// Saves the list of URLs to the storage.
+    ///
+    /// - Parameter shortenedURLS: The list of ShortenedURLs to save to the storage.
+    func saveShortenedURLS(_ shortenedURLS:[ShortenedURL]) {
         
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(shortenedURLS) {
+            
+            // TODO: Change to other storage type?
             let defaults = UserDefaults.standard
             defaults.set(encoded, forKey: "ShortenedURLS")
         }
         
     }
 
-    static func loadShortenedURLS() -> [ShortenedURL] {
+    /// Get's the list of saved URLs
+    ///
+    /// - Returns: The list of ShortenedURLs saved on the storage.
+    func loadShortenedURLS() -> [ShortenedURL] {
         var savedShortenedURLS:[ShortenedURL] = []
         
         if let shortenedURLData = UserDefaults.standard.object(forKey: "ShortenedURLS") as? Data {

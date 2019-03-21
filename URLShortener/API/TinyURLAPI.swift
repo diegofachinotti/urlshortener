@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// Class containing static methods to access tinyurl's API.
 class TinyURLAPI {
     
     private static let tinyurlAPIEndpoint = "http://tinyurl.com/api-create.php?url="
