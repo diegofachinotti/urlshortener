@@ -13,6 +13,9 @@
 		F1ECBA6422437AC900919572 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1ECBA6322437AC900919572 /* Assets.xcassets */; };
 		F1ECBA6722437AC900919572 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1ECBA6522437AC900919572 /* LaunchScreen.storyboard */; };
 		F1ECBA7222437AC900919572 /* URLShortenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBA7122437AC900919572 /* URLShortenerTests.swift */; };
+		F1ECBA822243941A00919572 /* ShortenedURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBA812243941A00919572 /* ShortenedURL.swift */; };
+		F1ECBA842243944000919572 /* TinyURLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBA832243944000919572 /* TinyURLAPI.swift */; };
+		F1ECBA8A2243954700919572 /* ShortenedURLDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBA892243954700919572 /* ShortenedURLDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		F1ECBA6D22437AC900919572 /* URLShortenerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URLShortenerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1ECBA7122437AC900919572 /* URLShortenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLShortenerTests.swift; sourceTree = "<group>"; };
 		F1ECBA7322437AC900919572 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1ECBA812243941A00919572 /* ShortenedURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortenedURL.swift; sourceTree = "<group>"; };
+		F1ECBA832243944000919572 /* TinyURLAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinyURLAPI.swift; sourceTree = "<group>"; };
+		F1ECBA892243954700919572 /* ShortenedURLDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortenedURLDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +83,11 @@
 		F1ECBA5B22437AC800919572 /* URLShortener */ = {
 			isa = PBXGroup;
 			children = (
+				F1ECBA882243952800919572 /* DAO */,
+				F1ECBA872243951200919572 /* API */,
+				F1ECBA862243950000919572 /* Models */,
+				F1ECBA85224394F500919572 /* Controllers */,
 				F1ECBA5C22437AC800919572 /* AppDelegate.swift */,
-				F1ECBA5E22437AC800919572 /* ViewController.swift */,
 				F1ECBA6022437AC800919572 /* Main.storyboard */,
 				F1ECBA6322437AC900919572 /* Assets.xcassets */,
 				F1ECBA6522437AC900919572 /* LaunchScreen.storyboard */,
@@ -94,6 +103,38 @@
 				F1ECBA7322437AC900919572 /* Info.plist */,
 			);
 			path = URLShortenerTests;
+			sourceTree = "<group>";
+		};
+		F1ECBA85224394F500919572 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1ECBA5E22437AC800919572 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F1ECBA862243950000919572 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1ECBA812243941A00919572 /* ShortenedURL.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F1ECBA872243951200919572 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F1ECBA832243944000919572 /* TinyURLAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F1ECBA882243952800919572 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				F1ECBA892243954700919572 /* ShortenedURLDAO.swift */,
+			);
+			path = DAO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1ECBA842243944000919572 /* TinyURLAPI.swift in Sources */,
 				F1ECBA5F22437AC800919572 /* ViewController.swift in Sources */,
 				F1ECBA5D22437AC800919572 /* AppDelegate.swift in Sources */,
+				F1ECBA822243941A00919572 /* ShortenedURL.swift in Sources */,
+				F1ECBA8A2243954700919572 /* ShortenedURLDAO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
